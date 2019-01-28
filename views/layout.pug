@@ -1,0 +1,75 @@
+doctype html
+html
+  head
+    title knowledgebase
+    link(rel="stylesheet",type="text/css" href="/css/style.css")
+    link(rel="stylesheet",href="/bower_components/boostrap/dist/css/bootstrap.css") 
+    script(src='/bower_components/jquery/dist/jquery.js') 
+    script(src='/js/main.js') 
+    script(src='/bower_components/boostrap/dist/js/bootstrap.js') 
+    
+    //-have to put jquery.js before bootstrap.js otherwise if you adjust the brower window to the smaller window, and the stripe in the right conner will not work.
+  body
+    html
+  head
+  body
+    //-received the code from boostrap website-get started-example-started template-ctrl+u and the source code for the nav part,and you can get the html urlencoded
+    //-and put the html code to the jade(pug) to html converter and get the pug code.
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+        a.navbar-brand(href='/') Knowledgebase
+        |   
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        |   
+        #navbarsExampleDefault.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item
+              a.nav-link(href='/')
+                | Home 
+                span.sr-only (current)
+            |
+            if user       
+              li.nav-item
+                a.nav-link(href='/articles/add') Add Article
+                |       
+            li.nav-item.dropdown
+              a#dropdown01.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Dropdown
+              |         
+              .dropdown-menu(aria-labelledby='dropdown01')
+                a.dropdown-item(href='#') Action
+                |           
+                a.dropdown-item(href='#') Another action
+                |           
+                a.dropdown-item(href='#') Something else here
+          |     
+          ul.navbar-nav.navbar-right
+            if user
+                li.nav-item
+                a.nav-link(href="/users/logout") Logout  
+                |  
+            else   
+              li.nav-item
+                a.nav-link(href="/users/register") Register
+                |  
+              li.nav-item  
+                a.nav-link(href="/users/login") Login  
+                |  
+          form.form-inline.my-2.my-lg-0
+            input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search')
+            |       
+            button.btn.btn-secondary.my-2.my-sm-0(type='submit') Search
+
+    .container
+      != messages('message', locals)
+      if errors
+        each error, i in errors
+          div(class="alert alert-danger") #{error.msg}
+      block content 
+      br
+      hr
+      footer
+      p Copyright &copy: 2018
+
+    
+    
+    

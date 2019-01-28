@@ -1,0 +1,4 @@
+{
+  "directory":"public/bower_components"
+}
+//to tell bower where to put bower's component (bower components directory)

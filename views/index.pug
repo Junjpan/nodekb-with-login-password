@@ -1,0 +1,9 @@
+extends layout
+block content
+  h1 #{title}
+  ul.list-group
+    each page, i in articles
+      li.list-group-item
+      a(href="/articles/"+page._id)=page.title
+      //-page is variable. it can be #{} format
+      br
